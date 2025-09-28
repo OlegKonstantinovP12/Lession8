@@ -55,13 +55,10 @@ struct BankAccount {
         }
     }
     var isOverdrawn: Bool {
-        if balance < 0 {
-            return true
-        } else {
-            return false
-        }
+        balance < 0
     }
 }
+
 let card = BankAccount(balance: 100)
 print(card.formattedBalance)
 print(card.isOverdrawn)
@@ -82,10 +79,19 @@ struct CartItem {
     var pricePerItem: Double
     var quantity: Int
     var totalPrice: Double {
-        pricePerItem * Double(quantity)
-    }
+
+        let total = String(format: "%.2f", (pricePerItem * Double(quantity)))
+        print(total)
+        guard let total = Double(total) else { return 0 }
+        return total
+            }
+//    pricePerItem * Double(quantity)
+//    var printTotalPrice: String {
+//        String(format: "Вы совершили покупку \(name) в количестве \(quantity). Итоговая сумма - %.2f", (totalPrice))
+//    }
 }
-let cart = CartItem(name: "water", pricePerItem: 25.6, quantity: 3)
+    
+let cart = CartItem(name: "water", pricePerItem: 25.63, quantity: 3)
 print(cart.totalPrice)
 print("")
 
