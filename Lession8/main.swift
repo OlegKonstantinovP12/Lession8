@@ -79,12 +79,11 @@ struct CartItem {
     var pricePerItem: Double
     var quantity: Int
     var totalPrice: Double {
-
         let total = String(format: "%.2f", (pricePerItem * Double(quantity)))
-        print(total)
+        
         guard let total = Double(total) else { return 0 }
         return total
-            }
+    }
 //    pricePerItem * Double(quantity)
 //    var printTotalPrice: String {
 //        String(format: "Вы совершили покупку \(name) в количестве \(quantity). Итоговая сумма - %.2f", (totalPrice))
